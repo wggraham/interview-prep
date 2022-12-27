@@ -7,7 +7,7 @@ class Solution:
             if k == o:
                 return True
             found = False
-            for ii, jj in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+            for ii, jj in [(0, -1), (0, 1), (1, 0), (-1, 0)]:
                 y, x = i + ii, j + jj
                 if not inBound(y, x): continue
                 if board[y][x] != target[k]: continue
@@ -64,5 +64,9 @@ A = ["CACCCBAAAACCABBACBAAABBCBBACAAACCAABABABCBBBCCC", "CAABABCCCCBCACAABCBAABC
      "AABCCCBABBBCAAACBACAAABCAACCAABAACCCABACCABBCAB", "ACAAACBABACACCBCBBBCACBABCCCCACBABBBABCAACBCAAA",
      "ACAAAABCACACCBACCACACABABCBABACCBCCAACBCAABABAC", "BACCBCBCBAAAACBCCCBABACBBCBCBBAABCCBCABCBCCCACA"]
 B = "CBCBBCBBABABABAACBCAACCABACBABAABABAA"
+A = [["A", "B", "C", "E"], ["S", "F", "E", "S"], ["A", "D", "E", "E"]]
+B = "ABCESEEEFS"
+A = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
+B = "ABCB"
 test = Solution()
 print(test.exist(A, B))
