@@ -34,6 +34,7 @@ class Solution:
         getValidQueens(r, c, lDiag, rDiag, grid)
         return res
 
-n = 3
+
+n = 4
 test = Solution()
 print(test.solveNQueens(n))
