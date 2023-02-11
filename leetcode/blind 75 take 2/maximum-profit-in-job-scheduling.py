@@ -47,7 +47,7 @@ class Solution:
 
         return maxProfit
 
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+    def jobScheduling7(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
         jobs = list(zip(startTime, endTime, profit))
 
         endIndex = {e: i for i, e in enumerate(endTime)}
@@ -73,6 +73,17 @@ class Solution:
             j += 1
         return maxProfit
 
+    def jobScheduling8(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        jobs = sorted(list(zip(startTime, endTime, profit))) + [(maxsize, 0, 0)]
+
+        max_profit, h = 0, []
+        for start, end, prof in jobs:
+            while h and h[0][0] <= start:
+                max_profit = max(max_profit, heappop(h)[1])
+            heappush(h, (end, max_profit + prof))
+
+        return max_profit
+
 
 startTime = [1, 2, 3, 3]
 endTime = [3, 4, 5, 6]
@@ -87,4 +98,5 @@ profit = [1, 2, 8, 10, 4]
 test = Solution()
 # print(test.jobScheduling(startTime, endTime, profit))
 # print(test.jobSchedulingTopDownDP(startTime, endTime, profit))
-print(test.jobSchedulingT2(startTime, endTime, profit))
+print(test.jobScheduling8(startTime, endTime, profit))
+# print(test.jobScheduling7(startTime, endTime, profit))
