@@ -20,7 +20,7 @@ class Solution:
     def solve(self, A, B, C):
         res = []
         if A == B:
-            [[A]]
+            return [[A]]
         d = set(C + [B])
 
         sLen = maxsize
